@@ -40,6 +40,25 @@ func TestLess(t *testing.T) {
 	}
 }
 
+func TestLessSameDate(t *testing.T) {
+	var ppl People = People{
+		Person{firstName: "Joe",lastName: "Dohn", birthDay:  time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)},
+		Person{firstName: "Hi",lastName: "Down", birthDay: time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)},
+		Person{firstName: "Hi",lastName: "Dohn", birthDay: time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)},
+		Person{firstName: "Chriss",lastName: "Masterpiece", birthDay:  time.Date(1998, time.November, 10, 23, 0, 0, 0, time.UTC)},
+	}
+	got := ppl.Less(0,1)
+	if got {
+			t.Errorf("Something is wrong")
+	}
+
+	secondCase := ppl.Less(1,2)
+	if secondCase {
+			t.Errorf("Something is wrong")
+	}
+	
+}
+
 func TestSwap(t *testing.T) {
 	var pplLocal People = People{
 		Person{firstName: "Joe",lastName: "Dohn", birthDay:  time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)},
